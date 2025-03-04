@@ -20,6 +20,7 @@ RUN pip install uvicorn
 
 RUN pip install fastapi
 RUN pip install sqlalchemy
+RUN pip install pyjwt
 
 COPY . .
 
