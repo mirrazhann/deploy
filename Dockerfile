@@ -16,15 +16,8 @@ COPY --from=requirements-stage /tmp/requirements.txt .
 
 RUN pip install --no-cache-dir --upgrade -r ./requirements.txt
 
-RUN pip install uvicorn
-
-RUN pip install fastapi
-RUN pip install sqlalchemy
-RUN pip install pyjwt
-RUN pip install attr
-RUN pip install alembic
-RUN pip install python-multipart
+RUN pip install uvicorn fastapi sqlalchemy pyjwt attr alembic python-multipart
 
 COPY . .
 
-ENTRYPOINT [ "uvicorn", "app.main:app" ]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
