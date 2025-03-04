@@ -19,6 +19,7 @@ RUN pip install --no-cache-dir --upgrade -r ./requirements.txt
 RUN pip install uvicorn
 
 RUN pip install fastapi
+RUN pip install sqlalchemy
 
 COPY . .
 
