@@ -18,6 +18,8 @@ RUN pip install --no-cache-dir --upgrade -r ./requirements.txt
 
 RUN pip install uvicorn
 
+RUN pip install fastapi
+
 COPY . .
 
 ENTRYPOINT [ "uvicorn", "app.main:app" ]
