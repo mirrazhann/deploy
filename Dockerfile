@@ -21,6 +21,9 @@ RUN pip install uvicorn
 RUN pip install fastapi
 RUN pip install sqlalchemy
 RUN pip install pyjwt
+RUN pip install attr
+RUN pip install alembic
+RUN pip install python-multipart
 
 COPY . .
 
