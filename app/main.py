@@ -73,7 +73,7 @@ async def post_signup(
         }
         raise HTTPException(status_code=401, detail=result)
     foto_bytes = await foto.read() if foto else None
-    new_user = User(id = 0, name = user_name, password = password, email = email, foto = foto_bytes)
+    new_user = User(name = user_name, password = password, email = email, foto = foto_bytes)
     user.add(db, new_user)
     result = {
         "result": "ok",

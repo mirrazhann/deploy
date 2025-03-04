@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import Column, LargeBinary, Integer, String, LargeBinary
-from attr import define
+# from attr import define
 
 from database import Base
 
@@ -13,23 +13,22 @@ class User(Base):
     foto = Column(LargeBinary, nullable=True)
 
 
-@define
-class UserCreate:
-    email: str
-    password: str
-    name: str
+# @define
+# class UserCreate:
+#     email: str
+#     password: str
+#     name: str
 
 
 class UserRepository:
     def find_user_by_email(self, db: Session, email: str):
         return db.query(User).filter(User.email == email).first()
     
-    def add(self, db:Session, user: UserCreate)-> User:
-        db_user = User(email=user.email, password=user.password)
-        db.add(db_user)
+    def add(self, db:Session, user: User)-> User:
+        db.add(user)
         db.commit()
-        db.refresh(db_user)
-        return db_user
+        db.refresh(user)
+        return user
         
     def get_all(self, db:Session, skip: int = 0, limit: int = 100):
         return db.query(User).offser(skip).limit(limit).all()
